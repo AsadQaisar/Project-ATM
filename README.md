@@ -40,5 +40,8 @@ The project simulates the basic functionalities of an ATM, offering an education
 ## How to Run
 
 1. Edit Connection String:
-   Open `App.config` and update the connection string with your SQL Server details.
+   1. Open `App.config` and update the connection string with your SQL Server details.
+   2. Create Database.
+   3. Run.
+   
    
