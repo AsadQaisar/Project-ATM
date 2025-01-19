@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0155d3a2ad4482c890a826cc0423fd7" Name="Diagram1">
+        <EntityTypeShape EntityType="ATMModel.tbl_Amount" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_DropdownType" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_eventlog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_Exception_Logs" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_LoginHistory" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_User" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_UserRights" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATMModel.tbl_UserRole" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="ATMModel.FK_tbl_Exception_Logs_tbl_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK_tbl_Exception_Logs_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK_tbl_LoginHistory_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK_tbl_UserRights_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="ATMModel.FK_tbl_UserRights_tbl_UserRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

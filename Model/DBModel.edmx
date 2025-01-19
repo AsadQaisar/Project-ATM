@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="ATMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+        <EntityType Name="tbl_Amount">
+          <Key>
+            <PropertyRef Name="AmountID" />
+          </Key>
+          <Property Name="AmountID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="AmountDescription" Type="varchar(max)" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Balance" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifyOn" Type="datetime" />
+          <Property Name="ModifyBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_DropdownType">
+          <Key>
+            <PropertyRef Name="DocumentTypeID" />
+          </Key>
+          <Property Name="DocumentTypeID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifyOn" Type="datetime" />
+          <Property Name="ModifyBy" Type="int" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_eventlog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="FormName" MaxLength="50" Type="varchar" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Time" Precision="7" Type="time" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="SystemName" MaxLength="20" Type="varchar" />
+          <Property Name="MacAddress" MaxLength="50" Type="varchar" />
+          <Property Name="TransactionID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="tbl_Exception_Logs">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="FormName" Type="nvarchar(max)" />
+          <Property Name="MethodName" Type="nvarchar(max)" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
+          <Property Name="ErrorStacktrace" Type="nvarchar(max)" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Time" Precision="7" Type="time" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="SystemName" MaxLength="50" Type="nvarchar" />
+          <Property Name="Macaddress" MaxLength="50" Type="nvarchar" />
+        </EntityType>
+        <EntityType Name="tbl_LoginHistory">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="IpAddress" MaxLength="50" Type="varchar" />
+          <Property Name="MACAddress" MaxLength="50" Type="varchar" />
+          <Property Name="SystemName" MaxLength="50" Type="varchar" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="FirstName" MaxLength="50" Type="varchar" />
+          <Property Name="LastName" MaxLength="50" Type="varchar" />
+          <Property Name="Email" MaxLength="50" Type="varchar" />
+          <Property Name="Phone" MaxLength="50" Type="varchar" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="LoginPassword" MaxLength="50" Type="varchar" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifyOn" Type="datetime" />
+          <Property Name="ModifyBy" Type="int" />
+          <Property Name="UserRoleID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FathersName" MaxLength="50" Type="varchar" />
+        </EntityType>
+        <EntityType Name="tbl_UserRights">
+          <Key>
+            <PropertyRef Name="UserRightID" />
+          </Key>
+          <Property Name="UserRightID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="UserRoleID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="AllowedTransactionID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" MaxLength="50" Type="varchar" />
+          <Property Name="IsActive" Nullable="false" Type="bit" />
+          <Property Name="LastChangedOn" Type="datetime" />
+          <Property Name="LastChangedBy" MaxLength="50" Type="varchar" />
+          <Property Name="DisplayPO" Nullable="false" Type="bit" />
+          <Property Name="ModifyPO" Nullable="false" Type="bit" />
+          <Property Name="CreatePO" Nullable="false" Type="bit" />
+          <Property Name="DisplayIBD" Nullable="false" Type="bit" />
+          <Property Name="ModifyIBD" Nullable="false" Type="bit" />
+          <Property Name="CreateIBD" Nullable="false" Type="bit" />
+          <Property Name="DisplayStoIssue" Nullable="false" Type="bit" />
+          <Property Name="ModifyStoIssue" Nullable="false" Type="bit" />
+          <Property Name="CreateStoIssue" Nullable="false" Type="bit" />
+          <Property Name="DisplayStoRecieve" Nullable="false" Type="bit" />
+          <Property Name="ModifyStoRecieve" Nullable="false" Type="bit" />
+          <Property Name="CreateStoRecieve" Nullable="false" Type="bit" />
+          <Property Name="DisplaySalesOut" Nullable="false" Type="bit" />
+          <Property Name="ModifySalesOut" Nullable="false" Type="bit" />
+          <Property Name="CreateSalesOut" Nullable="false" Type="bit" />
+          <Property Name="DIsplaySalesIn" Nullable="false" Type="bit" />
+          <Property Name="ModifySalesIn" Nullable="false" Type="bit" />
+          <Property Name="CreateSalesIn" Nullable="false" Type="bit" />
+          <Property Name="DisplayInternal" Nullable="false" Type="bit" />
+          <Property Name="ModifyInternal" Nullable="false" Type="bit" />
+          <Property Name="CreateInternal" Nullable="false" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="Role" MaxLength="20" Type="nvarchar" />
+        </EntityType>
+        <Association Name="FK_tbl_Exception_Logs_tbl_Location">
+          <End Type="Self.tbl_Amount" Multiplicity="0..1" Role="tbl_Amount" />
+          <End Type="Self.tbl_Exception_Logs" Multiplicity="*" Role="tbl_Exception_Logs" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Amount">
+              <PropertyRef Name="AmountID" />
+            </Principal>
+            <Dependent Role="tbl_Exception_Logs">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Exception_Logs_tbl_User">
+          <End Type="Self.tbl_User" Multiplicity="0..1" Role="tbl_User" />
+          <End Type="Self.tbl_Exception_Logs" Multiplicity="*" Role="tbl_Exception_Logs" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Exception_Logs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_LoginHistory_tbl_User">
+          <End Type="Self.tbl_User" Multiplicity="0..1" Role="tbl_User" />
+          <End Type="Self.tbl_LoginHistory" Multiplicity="*" Role="tbl_LoginHistory" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_LoginHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRights_tbl_User">
+          <End Type="Self.tbl_User" Multiplicity="0..1" Role="tbl_User" />
+          <End Type="Self.tbl_UserRights" Multiplicity="*" Role="tbl_UserRights" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_UserRights">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRights_tbl_UserRole">
+          <End Type="Self.tbl_UserRole" Multiplicity="0..1" Role="tbl_UserRole" />
+          <End Type="Self.tbl_UserRights" Multiplicity="*" Role="tbl_UserRights" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserRole">
+              <PropertyRef Name="UserRoleID" />
+            </Principal>
+            <Dependent Role="tbl_UserRights">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ATMModelStoreContainer">
+          <EntitySet Name="tbl_Amount" EntityType="Self.tbl_Amount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_DropdownType" EntityType="Self.tbl_DropdownType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_eventlog" EntityType="Self.tbl_eventlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Exception_Logs" EntityType="Self.tbl_Exception_Logs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_LoginHistory" EntityType="Self.tbl_LoginHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserRights" EntityType="Self.tbl_UserRights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_UserRole" EntityType="Self.tbl_UserRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Exception_Logs_tbl_Location" Association="Self.FK_tbl_Exception_Logs_tbl_Location">
+            <End EntitySet="tbl_Amount" Role="tbl_Amount" />
+            <End EntitySet="tbl_Exception_Logs" Role="tbl_Exception_Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Exception_Logs_tbl_User" Association="Self.FK_tbl_Exception_Logs_tbl_User">
+            <End EntitySet="tbl_User" Role="tbl_User" />
+            <End EntitySet="tbl_Exception_Logs" Role="tbl_Exception_Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_LoginHistory_tbl_User" Association="Self.FK_tbl_LoginHistory_tbl_User">
+            <End EntitySet="tbl_User" Role="tbl_User" />
+            <End EntitySet="tbl_LoginHistory" Role="tbl_LoginHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRights_tbl_User" Association="Self.FK_tbl_UserRights_tbl_User">
+            <End EntitySet="tbl_User" Role="tbl_User" />
+            <End EntitySet="tbl_UserRights" Role="tbl_UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRights_tbl_UserRole" Association="Self.FK_tbl_UserRights_tbl_UserRole">
+            <End EntitySet="tbl_UserRole" Role="tbl_UserRole" />
+            <End EntitySet="tbl_UserRights" Role="tbl_UserRights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ATMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Amount">
+          <Key>
+            <PropertyRef Name="AmountID" />
+          </Key>
+          <Property Name="AmountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmountDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int32" />
+          <NavigationProperty Name="tbl_Exception_Logs" Relationship="Self.FK_tbl_Exception_Logs_tbl_Location" FromRole="tbl_Amount" ToRole="tbl_Exception_Logs" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Balance" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_DropdownType">
+          <Key>
+            <PropertyRef Name="DocumentTypeID" />
+          </Key>
+          <Property Name="DocumentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_eventlog">
+          <Key>
+            <PropertyRef Name="EventID" />
+          </Key>
+          <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="SystemName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TransactionID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="tbl_Exception_Logs">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MethodName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorStacktrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="SystemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Macaddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Amount" Relationship="Self.FK_tbl_Exception_Logs_tbl_Location" FromRole="tbl_Exception_Logs" ToRole="tbl_Amount" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_Exception_Logs_tbl_User" FromRole="tbl_Exception_Logs" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_LoginHistory">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MACAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SystemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_LoginHistory_tbl_User" FromRole="tbl_LoginHistory" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="LoginPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int32" />
+          <Property Name="UserRoleID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="tbl_Exception_Logs" Relationship="Self.FK_tbl_Exception_Logs_tbl_User" FromRole="tbl_User" ToRole="tbl_Exception_Logs" />
+          <NavigationProperty Name="tbl_LoginHistory" Relationship="Self.FK_tbl_LoginHistory_tbl_User" FromRole="tbl_User" ToRole="tbl_LoginHistory" />
+          <NavigationProperty Name="tbl_UserRights" Relationship="Self.FK_tbl_UserRights_tbl_User" FromRole="tbl_User" ToRole="tbl_UserRights" />
+          <Property Name="FathersName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_UserRights">
+          <Key>
+            <PropertyRef Name="UserRightID" />
+          </Key>
+          <Property Name="UserRightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserRoleID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="AllowedTransactionID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastChangedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayPO" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyPO" Type="Boolean" Nullable="false" />
+          <Property Name="CreatePO" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayIBD" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyIBD" Type="Boolean" Nullable="false" />
+          <Property Name="CreateIBD" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayStoIssue" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyStoIssue" Type="Boolean" Nullable="false" />
+          <Property Name="CreateStoIssue" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayStoRecieve" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyStoRecieve" Type="Boolean" Nullable="false" />
+          <Property Name="CreateStoRecieve" Type="Boolean" Nullable="false" />
+          <Property Name="DisplaySalesOut" Type="Boolean" Nullable="false" />
+          <Property Name="ModifySalesOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateSalesOut" Type="Boolean" Nullable="false" />
+          <Property Name="DIsplaySalesIn" Type="Boolean" Nullable="false" />
+          <Property Name="ModifySalesIn" Type="Boolean" Nullable="false" />
+          <Property Name="CreateSalesIn" Type="Boolean" Nullable="false" />
+          <Property Name="DisplayInternal" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyInternal" Type="Boolean" Nullable="false" />
+          <Property Name="CreateInternal" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_UserRights_tbl_User" FromRole="tbl_UserRights" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_UserRole" Relationship="Self.FK_tbl_UserRights_tbl_UserRole" FromRole="tbl_UserRights" ToRole="tbl_UserRole" />
+        </EntityType>
+        <EntityType Name="tbl_UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_UserRights" Relationship="Self.FK_tbl_UserRights_tbl_UserRole" FromRole="tbl_UserRole" ToRole="tbl_UserRights" />
+        </EntityType>
+        <Association Name="FK_tbl_Exception_Logs_tbl_Location">
+          <End Role="tbl_Amount" Type="Self.tbl_Amount" Multiplicity="0..1" />
+          <End Role="tbl_Exception_Logs" Type="Self.tbl_Exception_Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Amount">
+              <PropertyRef Name="AmountID" />
+            </Principal>
+            <Dependent Role="tbl_Exception_Logs">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Exception_Logs_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Exception_Logs" Type="Self.tbl_Exception_Logs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_Exception_Logs">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_LoginHistory_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_LoginHistory" Type="Self.tbl_LoginHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_LoginHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRights_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_UserRights" Type="Self.tbl_UserRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="tbl_UserRights">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_UserRights_tbl_UserRole">
+          <End Role="tbl_UserRole" Type="Self.tbl_UserRole" Multiplicity="0..1" />
+          <End Role="tbl_UserRights" Type="Self.tbl_UserRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_UserRole">
+              <PropertyRef Name="UserRoleID" />
+            </Principal>
+            <Dependent Role="tbl_UserRights">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ATMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Amount" EntityType="Self.tbl_Amount" />
+          <EntitySet Name="tbl_DropdownType" EntityType="Self.tbl_DropdownType" />
+          <EntitySet Name="tbl_eventlog" EntityType="Self.tbl_eventlog" />
+          <EntitySet Name="tbl_Exception_Logs" EntityType="Self.tbl_Exception_Logs" />
+          <EntitySet Name="tbl_LoginHistory" EntityType="Self.tbl_LoginHistory" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <EntitySet Name="tbl_UserRights" EntityType="Self.tbl_UserRights" />
+          <EntitySet Name="tbl_UserRole" EntityType="Self.tbl_UserRole" />
+          <AssociationSet Name="FK_tbl_Exception_Logs_tbl_Location" Association="Self.FK_tbl_Exception_Logs_tbl_Location">
+            <End Role="tbl_Amount" EntitySet="tbl_Amount" />
+            <End Role="tbl_Exception_Logs" EntitySet="tbl_Exception_Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Exception_Logs_tbl_User" Association="Self.FK_tbl_Exception_Logs_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Exception_Logs" EntitySet="tbl_Exception_Logs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_LoginHistory_tbl_User" Association="Self.FK_tbl_LoginHistory_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_LoginHistory" EntitySet="tbl_LoginHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRights_tbl_User" Association="Self.FK_tbl_UserRights_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_UserRights" EntitySet="tbl_UserRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_UserRights_tbl_UserRole" Association="Self.FK_tbl_UserRights_tbl_UserRole">
+            <End Role="tbl_UserRole" EntitySet="tbl_UserRole" />
+            <End Role="tbl_UserRights" EntitySet="tbl_UserRights" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ATMModelStoreContainer" CdmEntityContainer="ATMEntities">
+          <EntitySetMapping Name="tbl_Amount">
+            <EntityTypeMapping TypeName="ATMModel.tbl_Amount">
+              <MappingFragment StoreEntitySet="tbl_Amount">
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AmountID" ColumnName="AmountID" />
+                <ScalarProperty Name="AmountDescription" ColumnName="AmountDescription" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifyOn" ColumnName="ModifyOn" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_DropdownType">
+            <EntityTypeMapping TypeName="ATMModel.tbl_DropdownType">
+              <MappingFragment StoreEntitySet="tbl_DropdownType">
+                <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifyOn" ColumnName="ModifyOn" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_eventlog">
+            <EntityTypeMapping TypeName="ATMModel.tbl_eventlog">
+              <MappingFragment StoreEntitySet="tbl_eventlog">
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Exception_Logs">
+            <EntityTypeMapping TypeName="ATMModel.tbl_Exception_Logs">
+              <MappingFragment StoreEntitySet="tbl_Exception_Logs">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorStacktrace" ColumnName="ErrorStacktrace" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="Macaddress" ColumnName="Macaddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_LoginHistory">
+            <EntityTypeMapping TypeName="ATMModel.tbl_LoginHistory">
+              <MappingFragment StoreEntitySet="tbl_LoginHistory">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+                <ScalarProperty Name="SystemName" ColumnName="SystemName" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="ATMModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="FathersName" ColumnName="FathersName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifyOn" ColumnName="ModifyOn" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserRights">
+            <EntityTypeMapping TypeName="ATMModel.tbl_UserRights">
+              <MappingFragment StoreEntitySet="tbl_UserRights">
+                <ScalarProperty Name="UserRightID" ColumnName="UserRightID" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AllowedTransactionID" ColumnName="AllowedTransactionID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastChangedOn" ColumnName="LastChangedOn" />
+                <ScalarProperty Name="LastChangedBy" ColumnName="LastChangedBy" />
+                <ScalarProperty Name="DisplayPO" ColumnName="DisplayPO" />
+                <ScalarProperty Name="ModifyPO" ColumnName="ModifyPO" />
+                <ScalarProperty Name="CreatePO" ColumnName="CreatePO" />
+                <ScalarProperty Name="DisplayIBD" ColumnName="DisplayIBD" />
+                <ScalarProperty Name="ModifyIBD" ColumnName="ModifyIBD" />
+                <ScalarProperty Name="CreateIBD" ColumnName="CreateIBD" />
+                <ScalarProperty Name="DisplayStoIssue" ColumnName="DisplayStoIssue" />
+                <ScalarProperty Name="ModifyStoIssue" ColumnName="ModifyStoIssue" />
+                <ScalarProperty Name="CreateStoIssue" ColumnName="CreateStoIssue" />
+                <ScalarProperty Name="DisplayStoRecieve" ColumnName="DisplayStoRecieve" />
+                <ScalarProperty Name="ModifyStoRecieve" ColumnName="ModifyStoRecieve" />
+                <ScalarProperty Name="CreateStoRecieve" ColumnName="CreateStoRecieve" />
+                <ScalarProperty Name="DisplaySalesOut" ColumnName="DisplaySalesOut" />
+                <ScalarProperty Name="ModifySalesOut" ColumnName="ModifySalesOut" />
+                <ScalarProperty Name="CreateSalesOut" ColumnName="CreateSalesOut" />
+                <ScalarProperty Name="DIsplaySalesIn" ColumnName="DIsplaySalesIn" />
+                <ScalarProperty Name="ModifySalesIn" ColumnName="ModifySalesIn" />
+                <ScalarProperty Name="CreateSalesIn" ColumnName="CreateSalesIn" />
+                <ScalarProperty Name="DisplayInternal" ColumnName="DisplayInternal" />
+                <ScalarProperty Name="ModifyInternal" ColumnName="ModifyInternal" />
+                <ScalarProperty Name="CreateInternal" ColumnName="CreateInternal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UserRole">
+            <EntityTypeMapping TypeName="ATMModel.tbl_UserRole">
+              <MappingFragment StoreEntitySet="tbl_UserRole">
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
