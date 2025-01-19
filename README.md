@@ -1,4 +1,4 @@
-# ATM (Microfinancing) Desktop Application
+# Project ATM
 
 This project is a **Desktop Application** designed to simulate the functionality of a real-life **ATM Machine**. It can also be referred to as a **Microfinancing App**, allowing users to perform basic banking functions like checking balances, withdrawing money, transferring funds, and more. The application is built using **.NET Core** and **Microsoft SQL** for a robust backend and smooth user experience.
 
